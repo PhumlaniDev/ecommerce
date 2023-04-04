@@ -1,6 +1,43 @@
-<p>registration works!</p>
-<h1>
 
-  Welcome to {{title}}
+<div class="container text-center pos">
+  <h1>Welcome to {{title}}</h1>
+</div>
 
-</h1>
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input #Name type="text" class="form-control" id="name" aria-describedby="Name">
+    </div>
+
+    <div class="mb-3">
+      <label for="surname" class="form-label">Surname</label>
+      <input #Surname type="text" class="form-control" id="surname">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input #Email type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+
+    <div class="mb-3">
+      <label for="Password1" class="form-label">Password</label>
+      <input #password type="password" class="form-control" id="Password1">
+    </div>
+
+    <div class="mb-3">
+      <label for="Confirm" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="Confirm">
+    </div>
+
+    <button (click)="Advice()" type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+  <input [(ngModel)]="title" type="text">
+  {{title}}
+</div>
+
+
+
+
+
