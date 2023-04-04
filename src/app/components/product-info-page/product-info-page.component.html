@@ -1,19 +1,19 @@
-<div class="product_info" *ngIf="products">
+<div class="product_info" *ngIf="product">
     <div class="gallery_image">
         <div class="image">
-            <img [src]="products[0].galleryImages[0].baseUrl" alt="leather-jacket-removebg">
+            <img [src]="product.articlesList[0].galleryDetails[0].baseUrl" alt="leather-jacket-removebg">
         </div>
         <div class="image">
-            <img [src]="products[0].galleryImages[1].baseUrl" alt="leather-jacket-removebg">
+            <img [src]="product.articlesList[0].galleryDetails[1].baseUrl" alt="leather-jacket-removebg">
 
         </div>
         <div class="image">
-            <img [src]="products[0].galleryImages[2].baseUrl" alt="leather-jacket-removebg">
+            <img [src]="" alt="leather-jacket-removebg">
         </div>
     </div>
     <div class="product">
         <div class="product_image">
-            <img [src]="products[0].images[0].baseUrl" alt="leather-jacket-removebg">
+            <img [src]="" alt="leather-jacket-removebg">
         </div>
         <p class="description">
             {{product.description}}
@@ -44,13 +44,13 @@
         <div class="color_container">
             <p>SELECT A COLOR</p>
             <div class="colors">
-                <div class="color" [ngStyle]="{ 'background-color': products[0].rgbColors[0]}">
+                <div class="color">
                 </div>
-                <div class="color" [ngStyle]="{ 'background-color': products[0].rgbColors[1]}">
+                <div class="color">
                 </div>
-                <div class="color" [ngStyle]="{ 'background-color': products[0].rgbColors[2]}">
+                <div class="color">
                 </div>
-                <div class="color" [ngStyle]="{ 'background-color': products[0].rgbColors[3]}">
+                <div class="color">
                 </div>
             </div>
         </div>
@@ -65,8 +65,8 @@
         </div>
 
         <p class="price">
-            ${{product.whitePrice.price}}
         </p>
 
         <button class="add_to_cart">add to cart</button>
     </div>
+</div>
