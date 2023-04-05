@@ -1,3 +1,5 @@
+
+
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
@@ -30,6 +32,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -93,6 +96,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -104,4 +108,6 @@
   "cli": {
     "analytics": "30d5ecf9-0994-4d1c-a9da-9a2096b0b277"
   }
+  
+
 }

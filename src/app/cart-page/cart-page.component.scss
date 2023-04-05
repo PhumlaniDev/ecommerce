@@ -3,20 +3,44 @@
     width: 100%;
      
 }
-td{
+
+
+td,th{
     text-align: center;
+    padding: 10px 5px;
+    
 }
-img{
-    width: 250px;
+
+td img{
+    width: 100px;
+    height: 100px;
+  
 }
+td input{
+   margin-top: 20px;
+}
+
 h1{
     text-align: center;
 }
 .pricing-table{
     float: right;
-    width: 40%;
+    width: 30%;
+ 
 }
-.checkout-button{
+td button{
+    display: flex;
+    float: inline-end;
+}
+
+
+#checkout-button{
     float: right;
+    margin-left: 70px;
+
+}
+#amountInput{
+    width: 100px;
+    padding-left: 2em;
 }
   

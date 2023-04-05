@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import {MatTableModule} from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {MatTableModule} from '@angular/material/table';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
