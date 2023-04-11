@@ -19,8 +19,9 @@ export class RegistrationComponent {
     alert("Backend Process the following data")
     this.title="new one"
   }
-  onSubmit(){
+  onSubmit(val: any){
   console.log("advice");
+  alert(val);
   }
 
 

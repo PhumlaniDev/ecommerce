@@ -6,61 +6,60 @@
 <div class="container">
   <h1 class="text-centre heading">Sign Up</h1>
 
-  <form #user="ngForm" ngSubmit="onSubmit()" novalidate>
+  <form #user="ngForm" ngSubmit="onSubmit(user.value)" novalidate>
   <div class="row ">
-    <i class="bi bi-people"></i>
-
     <div class=" col-4">
-      <input type="text" class="form-control" #Fname="ngModel" required
+      <input type="text" class="form-control" #Fname="ngModel" name="First name" required
       [class.is.invalid]="Fname.invalid && Fname.touched"
-      pattern="[A-Za-z]*" placeholder="First name" aria-label="First name" >
+      pattern="[A-Za-z]*" placeholder="First name" aria-label="First name" ngModel>
       <!-- <small class="text-danger" [class.d-none]="Fname.valid || Fname.untouched">
 	  Name is Required must be only letters
       </small> -->
       <div *ngIf="Fname.errors && (Fname.invalid || Fname.touched)">
-         <small class="text-danger" *ngIf="Fname.errors.required">Name is Required</small>
-	 <small class="text-danger" *ngIf="Fname.errors.pattern">Should Only Contain letters</small>
-      </div>
+        <!-- <small class="text-danger" *ngIf="Fname.errors.required">Name is Required</small>
+        <small class="text-danger" *ngIf="Fname.errors.pattern">Should Only Contain letters</small> -->
+            </div>
 
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <input type="text" class="form-control" #Lname="ngModel" required
-      [class.is.invalid]="Lname.invalid && Lname.touched" 
-      pattern="[A-Za-z]*" placeholder="Last name" aria-label="Last name">
-      <div *ngIf="Lname.errors && (Lname.invalid || Lname.touched)">
-	<small class="text-danger" *ngIf="Lname.errors.required">Last Name Required</small>
-	<small class="text-danger" *ngIf="Lname.errors.pattern">Should contain only letters</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <input type="text" class="form-control" #Lname="ngModel" required name="Surname"
+            [class.is.invalid]="Lname.invalid && Lname.touched"
+            pattern="[A-Za-z]*" placeholder="Last name" aria-label="Last name" ngModel>
+            <div *ngIf="Lname.errors && (Lname.invalid || Lname.touched)">
+              <!-- <small class="text-danger" *ngIf="Lname.errors.required">Last Name Required</small>
+                   <small class="text-danger" *ngIf="Lname.errors.pattern">Should contain only letters</small> -->
       </div>
 
     </div>
   </div>
   <div class="row">
     <div class=" col-4">
-      <input type="email" class="form-control" #mail="ngModel"
+      <input type="email" class="form-control" #mail="ngModel" name="email" pattern="[A-Za-z]*@gmail"
       [class.is.invalid]="mail.invalid && mail.touched"
-      pattern="[A-Za-z]*@gmail"placeholder="Email" aria-label="Email">
-      <div *ngIf="mail.errors && (mail.invalid || touched)">
-	      <small class="text-danger" *ngIf="mail.errors.required>Email is Rerquired</small>
-      </div>
+      placeholder="Email" aria-label="Email" ngModel>
+      <div *ngIf="mail.errors && (mail.invalid || mail.touched)">
+
+     </div>
+
     </div>
   </div>
   <div class="row">
     <div class="col-4">
-      <input type="password" class="form-control" ngModel placeholder="Password" aria-label="Password">
+      <input type="password" class="form-control" ngModel name="password" placeholder="Password" aria-label="Password">
     </div>
   </div>
   <div class="row">
     <div class="col-4">
-      <input type="password" class="form-control" ngModel placeholder="Confirm Password" aria-label="Confirm Password">
+      <input type="password" class="form-control" ngModel name="confirm password" placeholder="Confirm Password" aria-label="Confirm Password">
     </div>
   </div >
   <div class="row">
     <div class="col-4">
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="Terms">By clicking here you agree with the T&C</label>
+        <input type="checkbox" class="form-check-input" name="T&Cs" id="exampleCheck1">
+        <label class="form-check-label">By clicking here you agree with the T&C</label>
       </div>
     </div>
   </div>
@@ -70,8 +69,8 @@
 
     </div>
   </div>
+</form>
 </div>
-<form>
 <div class="Imag container ">
   <img src="https://images.freeimages.com/images/large-previews/0c4/grapes-splash-1636085.jpg" class="img-thumbnail" alt="...">
 </div>
