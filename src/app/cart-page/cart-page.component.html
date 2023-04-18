@@ -3,7 +3,7 @@
         <h1>Your Cart </h1>
     </div>
     
-    <div class="table-responsive-md">
+    <div id="table-cart-list" class="table-responsive-md">
         <table class="table" aria-describedby="product-table">
             <thead>
                 <tr>
@@ -15,28 +15,46 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><div class="product-info">
-                        <div>
-                            <img [src]="images[0].url" alt="jacket"/>
-                        </div>
+                    <td>
+                        <div class="product-info" *ngFor="let prod of products">
+                        
+                            <img [src]="prod.url" alt="jacket"/>
+                        
                        
                         <div class="product-details">
-                            <p>Long sleeve jacket</p>
-                            <p>Color : Brown</p>
-                            <p>Size: Small</p>
+                            <p>{{prod.productName}}
+                                <br>
+                            Color : {{prod.color}}
+                            <br>
+                            Size: {{prod.size}}
+                            <br>
+                            <a>X</a>
+                        </p>
+                           
                         </div>
                        
                         
-                    </div></td> 
-                    <td>R399.00</td>
-                    <td>
-                        <input type="number" value='1' min="1" id="amountInput">
-                    </td>
-                    <td>R399.00</td>
+                    </div>
+                </td> 
+                    <td *ngFor="let prod of products">R{{price}}</td>
+
+                    <td class="td-qty" >
+                    <div >
+                        <button type="button" class="btn" id="btn-plus" (click)="increment()">+</button>
+
+                        <span class="qty-span">{{qty}}</span>
+
+                        <button type="button" class="btn" id="btn-minus" (click)="decrement()">-</button>
+                    </div>
+                       
+                    </td>  
+
+                    <td> R{{a_total_price}}</td>
+
                    </tr>
             
             </tbody>
-          
+           
             
         </table>
     </div>
@@ -46,11 +64,11 @@
         
         <tr>
             <td>Subtotal</td>
-            <td>R399.99</td>
+            <td >R399.99</td>
         </tr>
         <tr>
             <td>Tax</td>
-            <td>R39.00</td>
+            <td >R39.00</td>
         </tr>
         <tr>
             <td>Delivery</td>
@@ -58,17 +76,12 @@
         </tr>
         <tr>
             <td>Grand total</td>
-            <td>R489.98</td>
+            <td >R489.98</td>
         </tr> 
-        <tr>
-            <td>
-                <button type="button" id="check-btn" class="btn btn-secondary"> Proceed to check out</button>  
-            </td>
-           
-        </tr>     
-    </table>
-   
-    </div>
+         </table>
+   </div>
   
+    
+        <button type="button" id="check-btn" class="btn btn-secondary"> Proceed to check out</button> 
     
 </div>

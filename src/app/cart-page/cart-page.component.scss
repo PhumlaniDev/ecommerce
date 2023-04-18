@@ -1,46 +1,86 @@
 
-.cart-list{
-    width: 100%;
-     
-}
 
 
-td,th{
-    text-align: center;
-    padding: 10px 5px;
+td{
+    
+ padding: 15px 5px;
     
 }
+th{
+    text-align: left;
+    padding: 5px;
 
+}
 td img{
     width: 100px;
     height: 100px;
+    margin-right: 10px;
   
 }
-td input{
-   margin-top: 20px;
+td a{
+    color: red;
+}
+
+.pricing-table  table{
+    width: 100%;
+    max-width: 350px;
 }
 
 h1{
     text-align: center;
 }
 .pricing-table{
-    float: right;
-    width: 30%;
- 
-}
-td button{
+   
     display: flex;
-    float: inline-end;
-}
-
-
-#checkout-button{
-    float: right;
-    margin-left: 70px;
+    justify-content:flex-end;
+    
 
 }
-#amountInput{
-    width: 100px;
-    padding-left: 2em;
+td:last-child{
+    text-align: right;
 }
+th:last-child{
+    text-align: right;
+}
+#btn-plus{
+    border-radius: 20%;
+    background-color: grey;
+    float:left;
+    display:inline;
+    
+}
+#table-cart-list{
+    margin: 8px auto;
+    
+}
+table{
+    width: 100%;
+}
+.product-info{
+    display:flex;
+    flex-wrap:wrap;
+}
+.qty-span{
+    float:left;
+    display:inline;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+#check-btn{
+    position: inherit;
+    float:right;
+
+}
+#btn-minus{
+    background-color: grey;
+    padding-right:15px;
+    padding-left: 15px;
+    border-radius: 20%;
+    float:left;
+    display:inline;
+
+
+}
+
   
