@@ -1,4 +1,15 @@
 <div class="container ">
+
+
+
+    <div class="empty " *ngIf="products.length < 1">
+        <div class="info">
+         <h4>You do not have any items in your cart</h4>
+        <a>Start Shopping</a>
+        </div>
+        
+        
+    </div>
     <div>
         <h1>Your Cart </h1>
     </div>
@@ -62,9 +73,9 @@
     <div class="pricing-table">
     <table aria-describedby="pricing-total">
         
-        <tr>
+        <tr *ngFor="let prod of products">
             <td>Subtotal</td>
-            <td >R399.99</td>
+            <td >R{{prod.price}}</td>
         </tr>
         <tr>
             <td>Tax</td>
