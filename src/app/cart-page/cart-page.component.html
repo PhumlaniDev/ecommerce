@@ -25,14 +25,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr  *ngFor="let prod of products">
+                
                     <td>
-                        <div class="product-info" *ngFor="let prod of products">
-                        
+                    <div class="product-info">   
+                       
                             <img [src]="prod.url" alt="jacket"/>
                         
                        
-                        <div class="product-details">
+                        
                             <p>{{prod.productName}}
                                 <br>
                             Color : {{prod.color}}
@@ -41,29 +42,31 @@
                             <br>
                             <a>X</a>
                         </p>
-                           
-                        </div>
-                       
-                        
-                    </div>
-                </td> 
-                    <td *ngFor="let prod of products">R{{price}}</td>
+                    </div>   
+                   </td> 
+                
+                   <td >
+                    R{{prod.price}}
 
-                    <td class="td-qty" >
-                    <div >
-                        <button type="button" class="btn" id="btn-plus" (click)="increment()">+</button>
+                   </td>
 
-                        <span class="qty-span">{{qty}}</span>
+                    <td  >
+                  
+                        <button type="button" class="btn" id="btn-plus" (click)="increment(prod)">+</button>
 
-                        <button type="button" class="btn" id="btn-minus" (click)="decrement()">-</button>
-                    </div>
+                        <span class="qty-span">{{prod.qty}}</span>
+
+                        <button type="button" class="btn" id="btn-minus" (click)="decrement(prod)">-</button>
+                    
                        
                     </td>  
-
-                    <td> R{{a_total_price}}</td>
-
-                   </tr>
-            
+                        <!-- total for each item according to the qty -->
+                    <td>
+                         R{{prod.price * prod.qty}}
+                    </td>
+             
+                </tr>
+             
             </tbody>
            
             
@@ -73,9 +76,9 @@
     <div class="pricing-table">
     <table aria-describedby="pricing-total">
         
-        <tr *ngFor="let prod of products">
+        <tr >
             <td>Subtotal</td>
-            <td >R{{prod.price}}</td>
+            <td >R799.98</td>
         </tr>
         <tr>
             <td>Tax</td>

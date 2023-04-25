@@ -4,7 +4,11 @@
 td{
     
  padding: 15px 5px;
+ 
     
+}
+.td-container{
+    width: 100% auto;
 }
 th{
     text-align: left;
@@ -18,7 +22,7 @@ td img{
   
 }
 td a{
-    color: red;
+    color: gray;
 }
 
 .pricing-table  table{
@@ -43,11 +47,21 @@ th:last-child{
     text-align: right;
 }
 #btn-plus{
-    border-radius: 20%;
+    border-radius: 50%;
     background-color: grey;
     float:left;
     display:inline;
     
+}
+#btn-minus{
+    background-color: grey;
+    padding-right:15px;
+    padding-left: 15px;
+    border-radius: 50%;
+    float:left;
+    display:inline;
+
+
 }
 #table-cart-list{
     margin: 8px auto;
@@ -60,7 +74,7 @@ table{
     display:flex;
     flex-wrap:wrap;
 }
-.qty-span{
+.qty-span{ 
     float:left;
     display:inline;
     margin-right: 25px;
@@ -71,16 +85,8 @@ table{
     position: inherit;
     float:right;
 
-}
-#btn-minus{
-    background-color: grey;
-    padding-right:15px;
-    padding-left: 15px;
-    border-radius: 20%;
-    float:left;
-    display:inline;
-
 
 }
+
 
   
