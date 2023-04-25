@@ -6,18 +6,20 @@ mat-toolbar {
  
 
 }
-.categories{
-    background-color: #DDD0C8;  
+.container-all{
+    background-color: #DDD0C8; 
+    width: 100%; 
 }
 .vr{
     height: 1.5rem;
+    margin-top:6px ;
 }
 .category{
-    margin-top: 5px;
-    margin-bottom: 15px;
-    
-     
+    margin-top: 10px;
+    margin-bottom: 25px;    
 }
-mat-button{
-    font-size: 5rem;
+.btn{
+    font-size: medium;
+    font-weight: 500;
 }
+
