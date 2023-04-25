@@ -1,0 +1,51 @@
+<div class="product_info" *ngIf="product">
+    <div class="product">
+        <div class="product_image">
+            <img [src]="product.image" alt="leather-jacket-removebg">
+        </div>
+        <p class="description">
+            {{product.description}}
+        </p>
+    </div>
+    <div class="info">
+        <h3>{{product.title}}</h3>
+
+        <div class="size_container">
+            <p>SELECT A SIZE</p>
+            <div class="sizes">
+                <div class="size">
+                    <span id="size" class="small">S</span>
+                </div>
+                <div class="size">
+                    <span id="size" class="size-medium">M</span>
+                </div>
+                <div class="size">
+                    <span id="size" class="size-large">L</span>
+                </div>
+                <div class="size">
+                    <span id="size" class="size-extra_large">XL</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="color_container">
+            <p>SELECT A COLOR</p>
+            <div class="colors">
+                <div class="color" [ngStyle]="{backgroundColor: 'navy'}">
+                </div>
+                <div class="color" [ngStyle]="{backgroundColor: 'green'}">
+                </div>
+                <div class="color" [ngStyle]="{backgroundColor: 'beige'}">
+                </div>
+                <div class="color" [ngStyle]="{backgroundColor: 'gold'}">
+                </div>
+            </div>
+        </div>
+
+        <p class="price">
+            ${{product.price}}
+        </p>
+
+        <button class="add_to_cart">add to cart</button>
+    </div>
+</div>
