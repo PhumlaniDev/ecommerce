@@ -1,0 +1,119 @@
+<div class=" container text-center">
+<h1> Product Card</h1>
+</div>
+
+<div class="shell">
+    <div class="container">
+        <div class="row">   
+            <ng-container *ngFor="let item of productList">
+            <div class="column">
+                <div class="the-product">
+                    <div class="the-img">
+                        <img src="{{item.image}}" alt="" class="img-responsive"/>
+                    </div>
+                    <div class="the-text">
+                        <div class="category">
+                            <span>{{item.title}}</span>
+                        </div>
+                        <!-- <div class="title-product">
+                            <h3>Brown Warm Jacket</h3>
+                        </div> -->
+                        <div class="the-description">
+                            <p>{{item.description}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="footer-left">
+                                <span class="price"> R{{item.price}}</span>
+                            </div>
+                            <!-- <div class="footer-right">
+                                <a href="#" class="buy-btn"><mat-icon>shopping_cart</mat-icon></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container> 
+            <!-- <div class="column">
+                <div class="the-product">
+                    <div class="the-img">
+                        <img src="https://images.unsplash.com/photo-1613678169171-582cce4c86bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" 
+                         alt="Product" class="img-responsive"/>
+                    </div>
+                    <div class="the-text">
+                        <div class="category">
+                            <span>Shoes</span>
+                        </div>
+                        <div class="title-product">
+                            <h3>Black Ladies Boots</h3>
+                        </div>
+                        <div class="the-description">
+                            <p>Add edge to your fits with these MKM Chunky Lace Up Boots. They are made from durable leather-look PU in a classic lace-up boot style with a high-top ankle and a chunky sole. Pair them with cargo pants and an oversize tee for an on-trend casual look.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="footer-left">
+                                <span class="price">R460.00</span>
+                            </div>
+                            <div class="footer-right">
+                                <a href="#" class="buy-btn"><mat-icon>shopping_cart</mat-icon></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="the-product">
+                    <div class="the-img">
+                        <img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" 
+                         alt="Product" class="img-responsive"/>
+                    </div>
+                    <div class="the-text">
+                        <div class="category">
+                            <span>Jeans</span>
+                        </div>
+                        <div class="title-product">
+                            <h3>Wide Leg Jeans</h3>
+                        </div>
+                        <div class="the-description">
+                            <p>These Deck pants offer an ultra high waist on a wide-legged silhouette. The G-Star Raw Deck jeans are designed to fit smoothly around the waist and hips and open up to a wide leg. The hem is easy to trim. As it's kept unfolded, you can shorten it to your perfect length if needed. Combine them with high heels to make it complete.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="footer-left">
+                                <span class="price">R260.00</span>
+                            </div>
+                            <div class="footer-right">
+                                <a href="#" class="buy-btn"><mat-icon>shopping_cart</mat-icon></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="column">
+                <div class="the-product">
+                    <div class="the-img">
+                        <img src="https://images.unsplash.com/photo-1623832101940-647285e32a58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" 
+                         alt="Product" class="img-responsive"/>
+                    </div>
+                    <div class="the-text">
+                        <div class="category">
+                            <span>Accesories</span>
+                        </div>
+                        <div class="title-product">
+                            <h3>Fashion Lightweight Scarf</h3>
+                        </div>
+                        <div class="the-description">
+                            <p>The scarf is a multi-wear item that is a must-have in every collection. Style on the neck, in the hair, on the wrist, as a belt or tied around a bag! This style comes with a neutral multi-coloured palette featuring blue and green shades and a patterned design.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="footer-left">
+                                <span class="price">R160.00</span>
+                            </div>
+                            <div class="footer-right">
+                                <a href="#" class="buy-btn"><mat-icon>shopping_cart</mat-icon></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
