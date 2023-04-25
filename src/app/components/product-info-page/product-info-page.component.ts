@@ -9,7 +9,7 @@ import { ProductServiceService } from 'src/app/service/product-service.service';
   styleUrls: ['./product-info-page.component.scss'],
 })
 export class ProductInfoPageComponent implements OnInit {
-  product: any;
+  product: string | any;
   products: Product[]
 
   constructor(
