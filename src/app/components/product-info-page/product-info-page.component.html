@@ -1,27 +1,14 @@
 <div class="product_info" *ngIf="product">
-    <div class="gallery_image">
-        <div class="image">
-            <img [src]="product.articlesList[0].galleryDetails[0].baseUrl" alt="leather-jacket-removebg">
-        </div>
-        <div class="image">
-            <img [src]="product.articlesList[0].galleryDetails[1].baseUrl" alt="leather-jacket-removebg">
-
-        </div>
-        <div class="image">
-            <img [src]="" alt="leather-jacket-removebg">
-        </div>
-    </div>
     <div class="product">
         <div class="product_image">
-            <img [src]="" alt="leather-jacket-removebg">
+            <img [src]="product.image" alt="leather-jacket-removebg">
         </div>
         <p class="description">
             {{product.description}}
         </p>
     </div>
     <div class="info">
-        <h3>{{product.name}}</h3>
-        <span>{{product.sapProductName}}</span>
+        <h3>{{product.title}}</h3>
 
         <div class="size_container">
             <p>SELECT A SIZE</p>
@@ -44,27 +31,19 @@
         <div class="color_container">
             <p>SELECT A COLOR</p>
             <div class="colors">
-                <div class="color">
+                <div class="color" [ngStyle]="{backgroundColor: 'navy'}">
                 </div>
-                <div class="color">
+                <div class="color" [ngStyle]="{backgroundColor: 'green'}">
                 </div>
-                <div class="color">
+                <div class="color" [ngStyle]="{backgroundColor: 'beige'}">
                 </div>
-                <div class="color">
+                <div class="color" [ngStyle]="{backgroundColor: 'gold'}">
                 </div>
-            </div>
-        </div>
-
-        <div class="quantity_container">
-            <p>QUANTITY</p>
-            <div class="quantity">
-                <button class="btn">+</button>
-                <p>1</p>
-                <button class="btn">-</button>
             </div>
         </div>
 
         <p class="price">
+            ${{product.price}}
         </p>
 
         <button class="add_to_cart">add to cart</button>
