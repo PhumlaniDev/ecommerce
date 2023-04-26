@@ -1,58 +1,63 @@
 
-<div class="container text-center pos">
-  <h1>Welcome to {{title}}</h1>
-</div>
-
 <div class="container">
   <h1 class="text-centre heading">Sign Up</h1>
-
-  <form #user="ngForm" ngSubmit="onSubmit(user.value)" novalidate>
+<!--#user="ngForm" ngSubmit="onSubmit(user.value)" -->
+  <form  novalidate>
   <div class="row ">
     <div class=" col-4">
       <input type="text" class="form-control" #Fname="ngModel" name="First name" required
       [class.is.invalid]="Fname.invalid && Fname.touched"
-      pattern="[A-Za-z]*" placeholder="First name" aria-label="First name" ngModel>
-      <!-- <small class="text-danger" [class.d-none]="Fname.valid || Fname.untouched">
-	  Name is Required must be only letters
-      </small> -->
-      <div *ngIf="Fname.errors && (Fname.invalid || Fname.touched)">
-        <!-- <small class="text-danger" *ngIf="Fname.errors.required">Name is Required</small>
-        <small class="text-danger" *ngIf="Fname.errors.pattern">Should Only Contain letters</small> -->
-            </div>
+      pattern="[A-Za-z]+" placeholder="First name" aria-label="First name" ngModel>
 
+      <div *ngIf="Fname.errors && (Fname.invalid && Fname.touched)">
+         <small class="text-danger" *ngIf="Fname.errors['required']">Name is Required</small>
+           <small class="text-danger" *ngIf="Fname.errors['pattern']">Should Only Contain letters</small>
           </div>
-        </div>
+      </div>
+   </div>
+
         <div class="row">
           <div class="col-4">
             <input type="text" class="form-control" #Lname="ngModel" required name="Surname"
             [class.is.invalid]="Lname.invalid && Lname.touched"
-            pattern="[A-Za-z]*" placeholder="Last name" aria-label="Last name" ngModel>
-            <div *ngIf="Lname.errors && (Lname.invalid || Lname.touched)">
-              <!-- <small class="text-danger" *ngIf="Lname.errors.required">Last Name Required</small>
-                   <small class="text-danger" *ngIf="Lname.errors.pattern">Should contain only letters</small> -->
+            pattern="[A-Za-z]+" placeholder="Last name" aria-label="Last name" ngModel>
+
+             <div *ngIf="Lname.errors && (Lname.invalid && Lname.touched)">
+               <small class="text-danger" *ngIf="Lname.errors['required']">Last Name Required</small>
+                   <small class="text-danger" *ngIf="Lname.errors['pattern']">Should contain only letters</small>
+              </div>
+          </div>
+        </div>
+  <div class="row">
+    <div class=" col-4">
+      <input type="email" class="form-control" #mail="ngModel" name="email" required
+      [class.is.invalid]="mail.invalid && mail.touched"
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z]+.[a-zA-Z]{2,4}" placeholder="Email" aria-label="Email" ngModel>
+      <div *ngIf="mail.errors && (mail.invalid && mail.touched)">
+        <small class="text-danger" *ngIf="mail.errors['required']">Email is required</small>
+        <small class="text-danger" *ngIf="mail.errors['pattern']">Valid email is required</small>
       </div>
 
     </div>
   </div>
   <div class="row">
-    <div class=" col-4">
-      <input type="email" class="form-control" #mail="ngModel" name="email" pattern="[A-Za-z]*@gmail"
-      [class.is.invalid]="mail.invalid && mail.touched"
-      placeholder="Email" aria-label="Email" ngModel>
-      <div *ngIf="mail.errors && (mail.invalid || mail.touched)">
-
-     </div>
-
+    <div class="col-4">
+      <input type="password" class="form-control" #password="ngModel" name="password" placeholder="Password" required aria-label="Password" ngModel>
+      <small class="text-danger" [class.d-none]="password.valid || password.untouched">
+        Password is required
+      </small>
     </div>
   </div>
   <div class="row">
     <div class="col-4">
-      <input type="password" class="form-control" ngModel name="password" placeholder="Password" aria-label="Password">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <input type="password" class="form-control" ngModel name="confirm password" placeholder="Confirm Password" aria-label="Confirm Password">
+      <input type="password" class="form-control" #Cpassword="ngModel" name="confirm password" placeholder="Confirm Password" required aria-label="Confirm Password" ngModel>
+      <small class="text-danger" [class.d-none]="Cpassword.valid || Cpassword.untouched">
+        Confirm Password is required
+      </small>
+      <div *ngIf="Cpassword.value  != password.value && Cpassword.valid && Cpassword.touched && password.valid && password.touched">
+        <small class="text-danger" [class.d-none]="Cpassword.value == password.value">
+          Password and Confirm Password does not march</small>
+      </div>
     </div>
   </div >
   <div class="row">
@@ -63,22 +68,20 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-4 btn">
-      <button [disabled]="user.form.invalid" type="submit" class="btn btn-primary">Submit</button>
-
+    <div class="row">
+      <div class="col-4">
+    <div class="text-center btnn">
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-  </div>
+      </div>
+    </div>
+
 </form>
+  <div class="Imag ">
+    <img src="../../assets/undraw_secure_login_pdn4.svg" class="img-thumbnail" alt="...">
+  </div>
 </div>
-<div class="Imag container ">
-  <img src="https://images.freeimages.com/images/large-previews/0c4/grapes-splash-1636085.jpg" class="img-thumbnail" alt="...">
-</div>
 
-
-
-  <input [(ngModel)]="title" type="text">
-  {{title}}
 
 
 
