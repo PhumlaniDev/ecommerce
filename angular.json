@@ -30,11 +30,7 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
-              "@angular/material/prebuilt-themes/purple-green.css",
-=======
               "@angular/material/prebuilt-themes/indigo-pink.css",
->>>>>>> 91f9783645b40a172670cb7fa5989b887d0ab73a
               "src/styles.scss"
             ],
             "scripts": []
@@ -98,11 +94,7 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
-              "@angular/material/prebuilt-themes/purple-green.css",
-=======
               "@angular/material/prebuilt-themes/indigo-pink.css",
->>>>>>> 91f9783645b40a172670cb7fa5989b887d0ab73a
               "src/styles.scss"
             ],
             "scripts": []
@@ -121,17 +113,9 @@
     }
   },
   "cli": {
-<<<<<<< HEAD
-    "analytics": "a380cfc0-f3e4-41a2-909b-a6944fdb00f3"
-=======
-<<<<<<< HEAD
     "analytics": "f506f58c-b9c1-462e-b8ac-caa66a73099e",
     "schematicCollections": [
       "@angular-eslint/schematics"
     ]
-=======
-    "analytics": false
->>>>>>> main
->>>>>>> 91f9783645b40a172670cb7fa5989b887d0ab73a
   }
 }
