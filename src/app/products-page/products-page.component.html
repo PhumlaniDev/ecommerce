@@ -1,0 +1,92 @@
+<p>products-page works!</p>
+
+<ul class="list-group" *ngFor="let product of products ">
+    <li 
+        
+        class="list-group-item">
+        {{ product.prodName }}
+        {{product.prodColor}}
+        {{ product.prodSize }}
+        
+        {{ product.prodQty }}
+    
+    </li>
+    <div class=" container text-center">
+
+        <h1> Product Card</h1>
+        
+        </div>
+        
+        
+        
+        
+        <div class="shell">
+        
+            <div class="container">
+        
+                <div class="row">  
+        
+                    <ng-container *ngFor="let product of products">
+        
+                    <div class="column">
+        
+                        <div class="the-product">
+        
+                            <div class="the-img" *ngFor="let img of prodImg" >
+        
+                                <img src="{{img.url}}" alt="" class="img-responsive"/>
+        
+                            </div>
+        
+                            <div class="the-text">
+        
+                                <div class="category">
+        
+                                    <span>{{product.prodName}}</span>
+        
+                                </div>
+        
+                                <!-- <div class="title-product">
+        
+                                    <h3>Brown Warm Jacket</h3>
+        
+                                </div> -->
+<!--         
+                                <div class="the-description">
+        
+                                    <p>{{product.description}}</p>
+        
+                                </div> -->
+        
+                                <div class="card-footer">
+        
+                                    <div class="footer-left">
+        
+                                        <span class="price"> R{{product.prodPrice}}</span>
+        
+                                    </div>
+        
+                                    <!-- <div class="footer-right">
+        
+                                        <a href="#" class="buy-btn"><mat-icon>shopping_cart</mat-icon></a>
+        
+                                    </div> -->
+        
+                                </div>
+        
+                            </div>
+        
+                        </div>
+        
+                    </div>
+        
+                </ng-container>
+        
+        </div>
+        
+            </div>
+        
+        </div>
+    
+    
+  </ul>

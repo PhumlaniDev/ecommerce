@@ -6,11 +6,15 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import { ProductsPageComponent } from './products-page/products-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartPageComponent
+    CartPageComponent,
+    ProductsPageComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -18,6 +22,7 @@ import {FormsModule} from '@angular/forms';
     MatTableModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule
    
   ],
   providers: [],

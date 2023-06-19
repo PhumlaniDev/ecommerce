@@ -1,4 +1,4 @@
-import { Component, ImportProvidersSource, OnInit } from '@angular/core';
+import { Component, ElementRef, ImportProvidersSource, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cart-page',
@@ -15,8 +15,8 @@ export class CartPageComponent  {
     color:'Brown',
     price:399.99,
     size:'Small',
-    qty:1
-    
+    qty:1,
+    sub_total_price :0
   },
   {
     prod_Id:2,
@@ -25,30 +25,43 @@ export class CartPageComponent  {
     color:'White',
     price:399.99,
     size:'Small',
-    qty:1
-    
+    qty:1,
+    sub_total_price :0
   }
   ];
-  subtotal_price: any | undefined;
+
+
+
+subTotalCell: any;
+subTotalValue: any;
+calculatedValue:any;
+total_to_pay:any;
+sub_total:any
+
+ngAfterViewInit(){
+  this.subTotalCell = document.getElementById('sub_total');
+  this.subTotalValue = this.subTotalCell.textContent.trim().replace('R', '');
+  this.calculatedValue = parseFloat(this.subTotalValue);
+  
+  return this.calculatedValue;
  
+}
 
-  get_total_price(){
 
-      for(let i = 0; i < this.products.length; i++){
-    
-        this.subtotal_price += this.products[i].price
-        
-   }
-    return this.subtotal_price;
-  }
-   //increment quantity and increase the price
   increment(prod:any){
-
+   
      if(prod.qty!=10){
       prod.qty += 1;
       
+      console.log(prod.sub_total_price)
+      // for(let i = 0; i < this.products.length; i++){
+      //   //
+      //   this.products[i].sub_total_price = this.products[i].price* this.products[i].qty;
+      //   console.log(this.products[i].sub_total_price);
+      //   this.products[i].sub_total_price=this.calculatedValue;
+      // }
+      }
       
-     }
 
 
   }
@@ -60,9 +73,12 @@ export class CartPageComponent  {
        prod.qty -= 1;
         
     }
-  }
-  }
     
+  }
+
+ 
+}
+   
 
 
 
