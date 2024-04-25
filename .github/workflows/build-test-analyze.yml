@@ -28,13 +28,6 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adopt'
-          architecture: 'x64'
-          server-id: 'github'
-          server-username: ${{ github.actor }}
-          server-password: ${{ secrets.GITHUB_TOKEN }}
-          overwrite: true
-          clean-path: false
 
       - name: Build with Maven
         run: mvn -B clean package
@@ -47,14 +40,17 @@ jobs:
     needs: build
 
     steps:
+      - name: Get SonarQube container IP
+        id: get-sonar-ip
+        run: echo "::set-output name=ip::$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube)"
+
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v1
         with:
           projectBaseDir: './'
-          projectName: 'Ecommerce-app'
-          projectKey: 'ecommerce-app'
-          hostUrl: ${{ secrets.SONAR_HOST_URL }}
-          token: ${{ secrets.SONAR_TOKEN }}
+        env:
+          SONAR_HOST_URL: http://${{ steps.get-sonar-ip.outputs.ip }}:9000
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   create-pr:
     runs-on: ubuntu-latest
