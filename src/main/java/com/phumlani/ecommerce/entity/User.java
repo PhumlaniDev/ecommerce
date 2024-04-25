@@ -24,5 +24,9 @@ public class User {
     private String lastName;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Address addressId;
+
 
 }

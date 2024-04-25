@@ -16,5 +16,7 @@ public class Address {
     private String province;
     private String zipCode;
     private String country;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User userId; // foreign key
 }

@@ -17,11 +17,13 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     private UUID orderNumber;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User userId; //foreign key
     private LocalDateTime orderCreatedDate;
     private Status status;
-    private Long totalPrice;
-    private Address shippingAddress; // need to have a boolean attribute in  address entity to determine if address is for shipping or not.
+    private double totalPrice;
+//    private Address shippingAddress; // need to have a boolean attribute in  address entity to determine if address is for shipping or not.
     private PaymentStatus paymentStatus;
 
 }

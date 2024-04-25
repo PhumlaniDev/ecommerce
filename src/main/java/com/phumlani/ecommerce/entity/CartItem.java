@@ -11,8 +11,12 @@ public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartItemsId;
-    private Cart cartId; //foreign key
-    private Product productId; //foreign key
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
     private Integer quantity;
     private Integer price;
 }

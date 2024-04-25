@@ -1,6 +1,5 @@
 package com.phumlani.ecommerce.entity;
 
-import com.phumlani.ecommerce.enums.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +15,8 @@ public class Product {
     private String description;
     private String price;
     private Integer quantity;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
     private String imageURL;
 }
