@@ -10,6 +10,7 @@ public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long cartItemsId;
     @ManyToOne
     @JoinColumn(name = "cart_id")
