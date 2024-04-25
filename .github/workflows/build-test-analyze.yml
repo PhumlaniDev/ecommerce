@@ -1,0 +1,73 @@
+name: Build, Test, and Analyze
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn -B clean package
+
+      - name: Run tests
+        run: mvn test
+
+  sonarqube:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v1
+        with:
+          projectBaseDir: './'
+          projectName: 'Ecommerce-app'
+          projectKey: 'ecommerce-app'
+          hostUrl: ${{ secrets.SONAR_HOST_URL }}
+          token: ${{ secrets.SONAR_TOKEN }}
+
+  create-pr:
+    runs-on: ubuntu-latest
+    needs: [build, sonarqube]
+
+    steps:
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'Automated PR creation'
+          title: 'Automatic PR from Develop'
+          body: 'This PR was automatically created because of changes in the Develop branch.'
+          branch: 'develop'
+          base: 'main'
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build, sonarqube, create-pr]
+
+    steps:
+      - name: Send email on failure
+        if: ${{ failure() }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.example.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: 'Workflow Failed: Build, Test, and Analyze'
+          to: 'your-email@example.com'
+          from: 'your-email@example.com'
+          body: |
+            The workflow failed to build, test, or analyze the code.
