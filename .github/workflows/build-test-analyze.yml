@@ -47,16 +47,12 @@ jobs:
     needs: build
 
     steps:
-      - name: Get SonarQube container IP
-        id: get-sonar-ip
-        run: echo "::set-output name=ip::$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube)"
-
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v1
         with:
           projectBaseDir: './'
         env:
-          SONAR_HOST_URL: http://${{ steps.get-sonar-ip.outputs.ip }}:9000
+          SONAR_HOST_URL: http://${{ secrets.SONAR_DOCKER_IP }}:9000
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   create-pr:
