@@ -42,18 +42,23 @@ jobs:
       - name: Run tests
         run: mvn test
 
+
+
   sonarqube:
     runs-on: ubuntu-latest
     needs: build
-
     steps:
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v1
+      - uses: actions/checkout@v4
         with:
+          # Disabling shallow clones is recommended for improving the relevancy of reporting
           projectBaseDir: './'
+          fetch-depth: 0
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_HOST_URL: http://${{ secrets.SONAR_DOCKER_IP }}:9000
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
 
   create-pr:
     runs-on: ubuntu-latest
