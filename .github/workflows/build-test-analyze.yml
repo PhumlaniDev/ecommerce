@@ -16,13 +16,13 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Specify the desired Java version
-          distribution: 'adopt'  # Specify the distribution (e.g., adopt, temurin)
-          architecture: 'x64'  # Specify the architecture (e.g., x64, x86)
-          server-id: 'github'  # Specify the server ID (optional)
-          server-username: ${{ github.actor }}  # Use the GitHub actor as the server username
-          server-password: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token as the server password
-          overwrite: true  # Specify whether to overwrite existing settings
+          java-version: '17'
+          distribution: 'adopt'
+          architecture: 'x64'
+          server-id: 'github'
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+          overwrite: true
           clean-path: false
 
       - name: Build with Maven
