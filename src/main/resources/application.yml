@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5433/store
+    url: jdbc:postgresql://127.0.0.1:5432/store
     username: phumlanidev
     password: Chr1st1@n9432
 
