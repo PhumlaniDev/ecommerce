@@ -8,7 +8,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'develop', credentialsId: ${GITHUB_CREDENTIALS}, url: 'https://github.com/PhumlaniDev/ecommerce.git'
+                script {
+                    // Use 'withCredentials' to access GitHub credentials
+                    withCredentials([usernamePassword(credentialsId: 'GITHUB_CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        // Checkout the code from GitHub
+                        git branch: 'develop', url: 'https://github.com/PhumlaniDev/ecommerce.git', credentialsId: 'GITHUB_CREDENTIALS'
+                    }
+                }
             }
         }
 
