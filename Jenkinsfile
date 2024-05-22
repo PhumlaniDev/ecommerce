@@ -9,6 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git 'https://github.com/PhumlaniDev/ecommerce.git'
+                git branch: 'develop', credentialsId: ${GITHUB_CREDENTIALS}, url: 'https://github.com/PhumlaniDev/ecommerce.git'
             }
         }
 
