@@ -11,6 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long userId;
     @Column(name = "username")
     private String username;
@@ -24,5 +25,9 @@ public class User {
     private String lastName;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Address addressId;
+
 
 }

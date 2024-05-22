@@ -1,4 +1,4 @@
-package com.phumlani.ecommerece;
+package com.phumlani.ecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

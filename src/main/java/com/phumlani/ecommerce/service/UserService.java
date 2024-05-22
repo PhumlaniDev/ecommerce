@@ -24,4 +24,10 @@ public class UserService {
             throw new UserNotFound("User not found");
         }
     }
+
+    public User saveUser(User user){
+        return repository.save(user);
+    }
+
+//    I have a develop branch and main branch, I would like to have a workflow that will trigger the build, test when I push the code to develop branch
 }
