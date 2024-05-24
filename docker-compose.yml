@@ -1,0 +1,37 @@
+version: '3.8'
+
+networks:
+  jenkins:
+    driver: bridge
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/store
+      SPRING_DATASOURCE_USERNAME: phumlanidev
+      SPRING_DATASOURCE_PASSWORD: Chr1st1@n9432
+      JENKINS_URL: http://jenkins:8080
+    depends_on:
+      - db
+    networks:
+      - jenkins
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: store
+      POSTGRES_USER: phumlanidev
+      POSTGRES_PASSWORD: Chr1st1@n9432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - jenkins
+
+volumes:
+  postgres-data:
+
