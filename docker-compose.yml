@@ -5,24 +5,6 @@ networks:
     external: true
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: mac_store
-    ports:
-      - "7000:7000"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/store
-      SPRING_DATASOURCE_USERNAME: phumlanidev
-      SPRING_DATASOURCE_PASSWORD: Chr1st1@n9432
-      JENKINS_URL: http://jenkins:8080
-    depends_on:
-      - db
-    networks:
-      - jenkins
-    restart: always
-
   db:
     image: postgres
     container_name: storeDB
