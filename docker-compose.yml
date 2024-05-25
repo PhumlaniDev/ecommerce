@@ -9,10 +9,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: mac_store
     ports:
       - "7000:7000"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/store
+      SPRING_DATASOURCE_URL: jdbc:postgresql://storeDB:5432/store
       SPRING_DATASOURCE_USERNAME: phumlanidev
       SPRING_DATASOURCE_PASSWORD: Chr1st1@n9432
       JENKINS_URL: http://jenkins:8080
@@ -23,11 +24,14 @@ services:
     restart: always
 
   db:
-    image: postgres:13
+    image: postgres
+    container_name: storeDB
     environment:
       POSTGRES_DB: store
       POSTGRES_USER: phumlanidev
       POSTGRES_PASSWORD: Chr1st1@n9432
+    ports:
+      - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
