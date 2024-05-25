@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     withMaven(maven: 'Maven 3.9.6') {
-                        sh 'mvn test -Dmaven.repo.local=/root/.m2/repository'
+                        sh 'mvn test'
                     }
                 }
             }
