@@ -49,43 +49,43 @@ pipeline {
                 }
             }
         }
-    }
 
-    stage('Code Analysis') {
-        steps {
-            script {
-                sh 'mvn sonar:sonar'
-            }
-        }
-    }
-
-    stage("Quality Gate") {
-        steps {
-            timeout(time: 1, unit: 'HOURS') {
-                // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-                // true = set pipeline to UNSTABLE, false = don't
-                waitForQualityGate abortPipeline: false, credentialsId: 'SONARQUBE_TOKEN'
-            }
-        }
-    }
-
-    stage('Build Docker Image') {
-        steps {
-            script {
-                sh 'docker build -d phumlanidev/ecommerce:$BUILD_ID'
-            }
-        }
-    }
-
-    stage('Push to Docker Hub') {
-        steps {
-            script {
-                withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
+        stage('Code Analysis') {
+                steps {
+                    script {
+                        sh 'mvn sonar:sonar'
+                    }
                 }
-                sh 'docker push phumlanidev/ecommerce:$BUILD_ID'
             }
-        }
+
+            stage("Quality Gate") {
+                steps {
+                    timeout(time: 1, unit: 'HOURS') {
+                        // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                        // true = set pipeline to UNSTABLE, false = don't
+                        waitForQualityGate abortPipeline: false, credentialsId: 'SONARQUBE_TOKEN'
+                    }
+                }
+            }
+
+            stage('Build Docker Image') {
+                steps {
+                    script {
+                        sh 'docker build -d phumlanidev/ecommerce:$BUILD_ID'
+                    }
+                }
+            }
+
+            stage('Push to Docker Hub') {
+                steps {
+                    script {
+                        withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                            sh 'docker login -u ${USERNAME} -p ${PASSWORD}'
+                        }
+                        sh 'docker push phumlanidev/ecommerce:$BUILD_ID'
+                    }
+                }
+            }
     }
 
     post {
