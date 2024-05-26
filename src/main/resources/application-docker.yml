@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://db:5432/store
+    url: jdbc:postgresql://db:5433/store
     username: phumlanidev
     password: Chr1st1@n9432
     driver-class-name: org.postgresql.Driver
