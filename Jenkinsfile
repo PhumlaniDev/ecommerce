@@ -9,7 +9,6 @@ pipeline {
         // Assuming you have configured Maven and JDK in Jenkins
         maven 'Maven 3.9.6'
         jdk 'Zulu JDK 17'
-        tool 'SonarQubeScanner'
     }
 
     environment {
