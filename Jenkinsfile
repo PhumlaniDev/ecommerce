@@ -1,9 +1,7 @@
 pipeline {
     agent {
         any {
-          image 'your-docker-image'
-             label 'docker-agent'
-             args '-v /tmp:/tmp'
+            label 'docker-agent'
         }
     }
 
