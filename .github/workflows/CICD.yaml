@@ -114,3 +114,21 @@ jobs:
         run: |
           docker push aphumlanidev/techhive:${{github.run_number}}
           docker push aphumlanidev/techhive:latest
+
+      - name: Upload package to GitHub Packages
+        run: mvn deploy -Dregistry=https://maven.pkg.github.com/OWNER/REPOSITORY
+        env:
+          USERNAME: ${{ github.actor }}
+          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "# Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## Unit Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "Unit test results can be found in the [artifacts](./actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
+          echo "## Dependency Check Report" >> $GITHUB_STEP_SUMMARY
+          echo "The dependency check report can be found in the [artifacts](./actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
+          echo "## Trivy Scan Report" >> $GITHUB_STEP_SUMMARY
+          echo "The Trivy scan report can be found in the [artifacts](./actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
