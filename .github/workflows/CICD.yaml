@@ -62,7 +62,7 @@ jobs:
         run: mvn test --batch-mode
 
       - name: Scan for vulnerabilities
-        run: mvn dependency-check:aggregate -Dformat=ALL -DfailBuildOnCVSS=7
+        run: mvn org.owasp:dependency-check-maven:aggregate -Dformat=ALL -DfailBuildOnCVSS=7
         continue-on-error: true
 
       - name: Upload vulnerability scan report
