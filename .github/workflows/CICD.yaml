@@ -86,7 +86,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t aphumlanidev/techhive:${{github.run_number}} .
-          docker tag aphumlanidev/techhive:${{github.run_number}} ${{github.run_number}}:latest
+          docker tag aphumlanidev/techhive:${{github.run_number}} aphumlanidev/techhive:latest
 
       - name: Scan Docker image
         uses: aquasecurity/trivy-action@master
