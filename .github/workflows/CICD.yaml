@@ -115,6 +115,9 @@ jobs:
           docker push aphumlanidev/techhive:${{github.run_number}}
           docker push aphumlanidev/techhive:latest
 
+      - name: Set up Maven repository directory
+        run: mkdir -p ~/.m2/repository
+
       - name: Upload package to GitHub Packages
         run: mvn deploy --settings .github/settings.xml
         env:
