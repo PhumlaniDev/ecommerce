@@ -78,6 +78,11 @@ jobs:
       - name: Package application
         run: mvn package --batch-mode
 
+      - name: Print Docker image variables
+        run: |
+          echo "IMAGE_NAME: $IMAGE_NAME"
+          echo "BUILD_NUMBER: $BUILD_NUMBER"
+
       - name: Build Docker image
         run: |
           docker build -t $IMAGE_NAME:$BUILD_NUMBER .
