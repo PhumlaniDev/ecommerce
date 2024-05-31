@@ -85,13 +85,13 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:$BUILD_NUMBER .
-          docker tag $IMAGE_NAME:${{github.run_number}} ${{github.run_number}}:latest
+          docker build -t aphumlanidev/techhive:${{github.run_number}} .
+          docker tag aphumlanidev/techhive:${{github.run_number}} ${{github.run_number}}:latest
 
       - name: Scan Docker image
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: $IMAGE_NAME:$BUILD_NUMBER
+          image-ref: aphumlanidev/techhive:$BUILD_NUMBER
           format: 'table'
           exit-code: '1'
           severity: 'HIGH,CRITICAL'
@@ -112,5 +112,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push $IMAGE_NAME:$BUILD_NUMBER
-          docker push $IMAGE_NAME:latest
+          docker push aphumlanidev/techhive:${{github.run_number}}
+          docker push aphumlanidev/techhive::latest
