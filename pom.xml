@@ -46,18 +46,10 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub OWNER Apache Maven Packages</name>
+            <name>GitHub Packages</name>
             <url>https://maven.pkg.github.com/PhumlaniDev/ecommerce</url>
         </repository>
     </distributionManagement>
-
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>github</id>-->
-<!--            <name>GitHub OWNER Apache Maven Packages</name>-->
-<!--            <url>https://maven.pkg.github.com/PhumlaniDev/ecommerce</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
 
     <build>
         <plugins>

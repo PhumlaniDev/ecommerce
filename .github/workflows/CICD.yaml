@@ -118,14 +118,10 @@ jobs:
           docker push aphumlanidev/techhive:${{github.run_number}}
           docker push aphumlanidev/techhive:latest
 
-      - name: Set up Maven repository directory
-        run: mkdir -p ~/.m2/repository
-
-#      - name: Upload package to GitHub Packages
-#        run: mvn --batch-mode deploy
-#        env:
-#          USERNAME: ${{ github.actor }}
-#          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - name: Upload package to GitHub Packages
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Create job summary
         if: always()
