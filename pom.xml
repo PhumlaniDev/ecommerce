@@ -51,6 +51,14 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/phumlanidev/ecommerce</url>
+        </repository>
+    </repositories>
+
+
     <build>
         <plugins>
             <plugin>
