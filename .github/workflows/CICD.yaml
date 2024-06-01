@@ -30,20 +30,45 @@ jobs:
           POSTGRES_USER: phumlanidev
           POSTGRES_PASSWORD: Chr1st1@n9432
 
+      sonarqube:
+        image: sonarqube:latest
+        ports:
+          - 9000:9000
+        options: >-
+          --health-cmd curl -f http://localhost:9000 || exit 1
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     env:
       SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/store
       SPRING_DATASOURCE_USERNAME: phumlanidev
       SPRING_DATASOURCE_PASSWORD: Chr1st1@n9432
+      DOCKER_BUILDKIT: 1
+      BUILD_NUMBER: ${{ github.run_number }}
+      IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+      USERNAME: ${{ github.actor }}
+      PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'zulu'
+
+      - name: Cache SonarQube packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
 
       - name: Cache Maven packages
         uses: actions/cache@v3
@@ -118,22 +143,8 @@ jobs:
           docker push aphumlanidev/techhive:${{github.run_number}}
           docker push aphumlanidev/techhive:latest
 
-      - name: Set up Maven repository directory
-        run: mkdir -p ~/.m2/repository
-
-      - name: Upload package to GitHub Packages
-        run: mvn deploy --settings .github/settings.xml
+      - name: Sonarqube Analysis
         env:
-          USERNAME: ${{ github.actor }}
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "# Build Summary" >> $GITHUB_STEP_SUMMARY
-          echo "## Unit Test Results" >> $GITHUB_STEP_SUMMARY
-          echo "Unit test results can be found in the [artifacts](./actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
-          echo "## Dependency Check Report" >> $GITHUB_STEP_SUMMARY
-          echo "The dependency check report can be found in the [artifacts](./actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
-          echo "## Trivy Scan Report" >> $GITHUB_STEP_SUMMARY
-          echo "The Trivy scan report can be found in the [artifacts](./actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=PhumlaniDev_ecommerce_f3f14ab1-8762-4410-b67a-f2cb0c5ccbda -Dsonar.projectName='ecommerce'
