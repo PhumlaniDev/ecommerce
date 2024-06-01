@@ -144,7 +144,8 @@ jobs:
           docker push aphumlanidev/techhive:latest
 
       - name: Sonarqube Analysis
+        uses: docker://sonarsource/sonar-scanner-cli:latest
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=PhumlaniDev_ecommerce_f3f14ab1-8762-4410-b67a-f2cb0c5ccbda -Dsonar.projectName='ecommerce'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
