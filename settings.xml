@@ -5,7 +5,7 @@
         <profile>
             <id>sonar</id>
             <properties>
-                <sonar.login>YOUR_SONARQUBE_TOKEN</sonar.login>
+                <sonar.token>YOUR_SONARQUBE_TOKEN</sonar.token>
             </properties>
         </profile>
     </profiles>
