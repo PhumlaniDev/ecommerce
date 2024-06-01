@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "users_", uniqueConstraints = {
+@Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")})
 public class User {
 
@@ -26,7 +26,7 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "address_id")
     private Address addressId;
 
 

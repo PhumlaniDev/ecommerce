@@ -3,8 +3,6 @@ package com.phumlani.ecommerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Entity
 @Table(name = "cart")
 @Data

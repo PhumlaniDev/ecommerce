@@ -2,22 +2,24 @@ package com.phumlani.ecommerce.service;
 
 import com.phumlani.ecommerce.entity.Address;
 import com.phumlani.ecommerce.entity.User;
+import com.phumlani.ecommerce.exceptions.UserAlreadyExist;
 import com.phumlani.ecommerce.exceptions.UserNotFound;
 import com.phumlani.ecommerce.repository.AddressRepository;
 import com.phumlani.ecommerce.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
     private final UserRepository userRepository;
     private final AddressRepository addressRepository;
+
+    public UserService(UserRepository userRepository, AddressRepository addressRepository) {
+        this.userRepository = userRepository;
+        this.addressRepository = addressRepository;
+    }
 
     public Optional<User> findUserById(Long userId) throws UserNotFound {
         Optional<User> existingUser = userRepository.findById(userId);
@@ -28,11 +30,11 @@ public class UserService {
         }
     }
 
-    public void createUser(User user){
+    public void createUser(User user) throws UserAlreadyExist {
         Optional<User> existingUser = userRepository.findUserByEmail(user.getEmail());
 
         if(existingUser.isPresent()){
-            throw new RuntimeException("User already exists");
+            throw new UserAlreadyExist("User already exists");
         }
 
         Address address = user.getAddressId();
